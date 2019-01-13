@@ -1,0 +1,96 @@
+body{
+		 background: url("museedulouvre.jpg") no-repeat center fixed ;
+		-webkit-background-size: cover; 
+  		background-size: cover; 
+}
+
+.bg-primary {
+	    background-color: lightblack !important;
+	    text-transform: uppercase;
+	    word-spacing: 129px;
+		font-weight: bold;
+}
+.navbar-brand {
+		
+		font-weight: bold;
+		font-size: 15px;
+}
+.bf{
+	text-align: center;
+}
+.vf{
+text-align: left;
+}
+.tf{
+	text-align: right;
+
+}
+.expo a,.actu a, .infop a{
+	text-align: center;
+	color: darkblue;
+	background-color: white;
+	font-weight: bold;
+}
+.expo ,.actu , .infop {
+	text-align: center;
+}
+h1{
+	color:white;
+	font-size: 20px;
+}
+.container{
+	border:  2px   ;
+	background-color: ;
+}
+@media screen and (min-width: 400px) {
+.news
+{
+
+    background-color:white ;
+    margin-top:10px;
+    height:100px;
+    border: 2px  ;
+    margin-left:55px ;
+    margin-right:55;
+    padding: 10px;
+ 	color: blue;
+    border-top-left-radius: 50px 20px;
+    border-top-right-radius: 50px 20px;
+    border-bottom-right-radius: 50px 20px;
+    border-bottom-left-radius: 50px 20px;
+}}
+@media screen and (min-width: 400px) {
+.contentactu1,.contentactu2,.contentactu3
+{
+background-color: white;
+color:darkblue;
+font-weight: bold;
+padding-left: 5px;
+}
+.actu1,.actu2,.actu3
+{
+color:red;
+text-align: center;
+font-weight: bold;
+text-decoration: underline;
+}}
+@media screen and (max-width: 399px) {
+.news 
+{
+    background-color:white;
+    margin-top:0px;
+    border: 2px solid blue;
+}}
+.form-group{
+	color:white;
+	font-size: 15px;
+	text-align: center;
+}			
+input#form_name.form-control,
+input#form_email.form-control,
+input#form_phoneNumber.form-control,
+input#form_subject.form-control,
+textarea#form_message.form-control{
+	color: darkblue;
+	font-weight: bold;
+}

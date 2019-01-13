@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% form_theme formContact 'bootstrap_4_layout.html.twig'  %}
+{% block body %}
+
+	<h1> Remplissez le formulaire ci-dessous pour contacter le Musée </h1>
+	{{form_start(formContact)}}
+
+	{{ form_row(formContact.name, {'attr' : { 'placeholder': "Votre Nom"}} ) }}	
+	{{ form_row(formContact.email, {'attr' : { 'placeholder': "Votre email"}} ) }}
+	{{ form_row(formContact.phoneNumber, {'attr' : { 'placeholder': "Votre numéro de téléphone"}} ) }}	
+	{{ form_row(formContact.subject, {'attr' : { 'placeholder': "Object de votre message"}} ) }}	
+	{{ form_row(formContact.message, {'attr' : { 'placeholder': "Votre message"}} ) }}	
+	<button type="submit" class ="btn btn-success"> Envoyer </button>
+
+
+	{{form_end(formContact)}}
+
+{% endblock %}
