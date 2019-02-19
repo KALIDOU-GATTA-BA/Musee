@@ -2,6 +2,30 @@
 
 {% block title %}Tickets {% endblock %}
 
+
+
 {% block body %}
-<a href="">COMMANDEZ UN TICKET</a>
+
+<h1>Achetez un billet pour visiter le Louvre</h1>
+{{form_start(formTicket)}}
+	
+	<div class="js-user-rating">{{ form_row(formTicket.email, {'attr' : { 'placeholder': "Votre adresse email"}, 'label': 'Email' } )}}</div>
+	{{ form_row(formTicket.visitDate, {'attr': {'placeholder':"Date de visite souhaitée"},'label': 'Date de visite souhaitée' } )}}
+	<a  href="#" id="btnAddTicket"><mark>Ajouter un billet</mark></a> <br><br>
+	<button type="submit" class ="btn btn-success"> Suivant </button>
+	
+	{% block javascript %} 
+		<script> 
+				var btn= document.getElementById('btnAddTicket');
+	       		btn.addEventListener('click', newForm);
+	       		function newForm(){
+	        	this.innerHTML='<div class="newForm"><form><br><div class="labelNewForm">Type de billet</div><input type="text"><br><br><div class="labelNewForm">Nom</div><input type="text"><br><br><div class="labelNewForm">Pays</div><input type="text"><br><br><div class="labelNewForm">Tarif réduit</div><input type="checkbox"><br><br><pre><input type="submit" class="btn btn-success" value="Valider"><br><input type="reset" class="btn btn-danger" value="Annuler"></pre></form><br><br><br><br><mark>+1_Ticket</mark></div>';  
+	      	 };
+	      	 
+	    </script>
+	 
+	{% endblock %}
+
+{{form_end(formTicket)}}
+
 {% endblock %}

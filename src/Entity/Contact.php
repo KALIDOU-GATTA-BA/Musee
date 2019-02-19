@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,12 +21,17 @@ class Contact
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $name;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="integer")
      */
-    private $message;
+    private $phoneNumber;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -32,18 +39,25 @@ class Contact
     private $subject;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
-    private $email;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $phoneNumber;
+    private $message;
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
     }
 
     public function getName(): ?string
@@ -58,14 +72,14 @@ class Contact
         return $this;
     }
 
-    public function getMessage(): ?string
+    public function getPhoneNumber(): ?int
     {
-        return $this->message;
+        return $this->phoneNumber;
     }
 
-    public function setMessage(string $message): self
+    public function setPhoneNumber(int $phoneNumber): self
     {
-        $this->message = $message;
+        $this->phoneNumber = $phoneNumber;
 
         return $this;
     }
@@ -82,27 +96,35 @@ class Contact
         return $this;
     }
 
-    public function getEmail(): ?string
+    public function getMessage(): ?string
     {
-        return $this->email;
+        return $this->message;
     }
 
-    public function setEmail(string $email): self
+    public function setMessage(string $message): self
     {
-        $this->email = $email;
+        $this->message = $message;
 
         return $this;
     }
-
-    public function getPhoneNumber(): ?int
+    //Tag
+    public function getTags(): Collection
     {
-        return $this->phoneNumber;
+        return $this->tags;
     }
-
-    public function setPhoneNumber(?int $phoneNumber): self
+    public function addTag(Tag $tag): self
     {
-        $this->phoneNumber = $phoneNumber;
-
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+        }
         return $this;
     }
+    public function removeTag(Tag $tag): self
+    {
+        if ($this->tags->contains($tag)) {
+            $this->tags->removeElement($tag);
+        }
+        return $this;
+    }
+    //EndTag
 }

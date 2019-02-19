@@ -3,7 +3,10 @@ body{
 		-webkit-background-size: cover; 
   		background-size: cover; 
 }
-
+.container{
+	background-color: #2C3E50;
+	opacity: 0.9;
+}
 .bg-primary {
 	    background-color: lightblack !important;
 	    text-transform: uppercase;
@@ -15,8 +18,11 @@ body{
 		font-weight: bold;
 		font-size: 15px;
 }
-.bf{
+.bf, .newForm, .send{
 	text-align: center;
+}
+.labelNewForm{
+	color: red;
 }
 .vf{
 text-align: left;
@@ -25,6 +31,22 @@ text-align: left;
 	text-align: right;
 
 }
+ #btnAddTicket{
+ 	color: green;
+ 	font-weight: bold;
+ }
+@media screen and (min-width: 401px) {
+    .btn.btn-success{
+		margin-bottom: 10px;  
+    }
+}
+@media screen and (max-width: 400px) {
+    .btn.btn-success{
+		margin-left: 148px;
+		margin-bottom: 10px;  
+    }
+}
+
 .expo a,.actu a, .infop a{
 	text-align: center;
 	color: darkblue;
@@ -90,6 +112,10 @@ input#form_name.form-control,
 input#form_email.form-control,
 input#form_phoneNumber.form-control,
 input#form_subject.form-control,
+input#form_ticketType.form-control,
+input#form_country.form-control,
+input#form_dateBirth.js-datepicker.form-control,
+input#form_visitDate.js-datepicker.form-control,
 textarea#form_message.form-control{
 	color: darkblue;
 	font-weight: bold;

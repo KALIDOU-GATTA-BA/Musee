@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1 class="ver">Ajouter une Réservation</h1>
+
+    {{ form_start(form_add_reservation, {'attr': {'novalidate': 'novalidate'}}) }}
+
+        {# store the prototype on the data-prototype attribute #}
+        <ul id="tickets-fields-list"
+            data-prototype="{{ form_widget(form_add_reservation.tickets.vars.prototype)|e }}"
+            data-widget-tickets="{{ '<li></li>'|e }}">
+            {% for ticketField in form_add_reservation.tickets %}
+                <li>
+                    {{ form_errors(ticketField) }}
+                    {{ form_widget(ticketField) }}
+                </li>
+            {% endfor %}
+        </ul>
+
+  <button type="button" class="add-another-collection-widget"data-list="#tickets-fields-list">+1 Ticket</button>
+  <button type="submit">Suivant</button> 
+  
+    {{ form_end(form_add_reservation) }}
+
+{%  endblock %}
