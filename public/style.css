@@ -120,3 +120,11 @@ textarea#form_message.form-control{
 	color: darkblue;
 	font-weight: bold;
 }
+.login, .logout{
+	text-align: center;
+}
+.foot{
+	text-align: center;
+	margin-top: 550px;
+	color: white;	
+}
