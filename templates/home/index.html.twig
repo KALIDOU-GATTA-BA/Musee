@@ -5,3 +5,14 @@
 {% block body %}
 
 {% endblock %}
+{% block footer %}
+	{% if not app.user %}
+				<div class='login'>
+					<a href="{{ path('security_login') }}" class='nav-link'><mark>Administration</mark></a>
+				</div>
+			     	{% else %}
+				<div class='logout'>
+				    <a href="{{ path('security_logout') }}" class='nav-link'><mark>Deconnexion</mark></a>
+				</div>
+		{% endif %}
+{% endblock %}
