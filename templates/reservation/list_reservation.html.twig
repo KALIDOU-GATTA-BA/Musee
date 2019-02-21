@@ -4,20 +4,15 @@
 
     <h1>Reservations</h1>
 
-   
-
         <h2>
-        
-        <span>Date de visite: {{ reservation.visitDate|date('d-m-Y') }}</span><br>
+      
+	        <span>Date de visite: {{ reservation.visitDate|date('d-m-Y') }}</span><br>
+	        <span>Votre adresse email: {{ reservation.email }}</span><br>
+	        <span>Votre pays: {{ ticket.country}}</span><br>
+	        <span>Votre nom: {{ ticket.name}}</span><br>
+	        <span>Votre date de naissance: {{ ticket.birthDate|date('d-m-Y') }}</span><br>
+	        <span>Le type de billet: {{ ticket.ticketType }}</span><br>
+	        <span>Tarif réduit:{{ ticket.reducedPrice ? 'OUI' : 'NON' }}</span><br>
 
-		<script>	
-
-			
-
-		</script>          
-
-        </span>
-
-        
-</h2>
+		</h2>
 {%  endblock %}

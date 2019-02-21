@@ -7,29 +7,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class ListReservationsController extends AbstractController
 {
     /**
-     * @Route(path="add/reservation/{id}", name="list_reservations")
+     * @Route(path="add/reservation/{resa_id}&{ticket_id}", name="list_reservations")
      */
-    public function listReservationsController($id)
+    public function listReservationsController($resa_id, $ticket_id)
     {
-       /* $entityManager = $this->getDoctrine()->getManager();
-        $reservationRepository = $entityManager->getRepository(Reservation::class);
-        $reservations = $reservationRepository->find($id);
-
-        $ticketRepository = $entityManager->getRepository(Ticket::class);
-        $tickets = $ticketRepository->find($id);
-
-        $repo=$this ->getDoctrine()->getRepository(Ticket::class);
-        $t= $repo->find($id);
-
-        return $this->render('reservation/list_reservation.html.twig', [
-           'reservations' => $reservations,
-           'tickets' => $tickets
-        ]);*/
-        $ticketRepository=$this ->getDoctrine()->getRepository(Ticket::class);
-        $tickets= $ticketRepository->find($id);
 
         $reservationRepository=$this->getDoctrine()->getRepository(Reservation::class);
-        $reservations= $reservationRepository->find($id);
+        $reservations= $reservationRepository->find($resa_id);
+        $ticketRepository=$this ->getDoctrine()->getRepository(Ticket::class);
+        $tickets= $ticketRepository->find($ticket_id);
 
         return $this->render('reservation/list_reservation.html.twig', [
            'ticket' => $tickets,
