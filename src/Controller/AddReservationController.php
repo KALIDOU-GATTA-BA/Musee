@@ -21,18 +21,30 @@ class AddReservationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // sauvegarde dans la base de donnée
             $reservation = $form->getData();
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($reservation);
-            foreach ($reservation->getTickets() as $ticket) {
-                $entityManager->persist($ticket);
-            }
-            $entityManager->flush();
-            return $this->redirectToRoute('list_reservations');
+           
+                $visitDay = $reservation->getVisitDate();
+                $day= $visitDay->format('Y-m-d');
+                $day=$day[6];
+                if ($d != '2'){
+
+                }
+                else{ 
+                    
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->persist($reservation);
+                    foreach ($reservation->getTickets() as $ticket) {
+                        $entityManager->persist($ticket);
+                    }
+                    $entityManager->flush();
+                    return $this->redirectToRoute('list_reservations', [
+                        
+                        'ticket_id'=> $ticket->getId(),
+                        'resa_id' => $reservation->getId()
+                        ]);
+                }
         }
         return $this->render('reservation/add_reservation.html.twig', [
             'form_add_reservation' => $form->createView(),
         ]);
-
     }
-
 }
