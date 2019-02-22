@@ -21,7 +21,8 @@ class AddReservationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // sauvegarde dans la base de donnée
             $reservation = $form->getData();
-            $ticketType='Billet journée';
+            dd($reservation->getTickets());
+            //$ticketType = $id->getTicketType();
            
                 $visitDay = $reservation->getVisitDate();
                 $visitDay= $visitDay->format('Y-m-d');
