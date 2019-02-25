@@ -36,20 +36,7 @@ class AddReservationController extends AbstractController
                     $curentHour = $curentHour[0] .$curentHour[1];
                     if ((int)$curentHour >= 14 ){
                             echo("Il n'est pas possible de réserver un billet journée après 14 h");
-                    }
-                    else {
-                        $entityManager = $this->getDoctrine()->getManager();
-                        $entityManager->persist($reservation);
-                        foreach ($reservation->getTickets() as $ticket) {
-                            $entityManager->persist($ticket);
-                        }
-                        $entityManager->flush();
-                        return $this->redirectToRoute('list_reservations', [
-                    
-                        'ticket_id'=> $ticket->getId(),
-                        'resa_id' => $reservation->getId()
-                        ]);
-                    }
+                    }     
                 }
                 elseif (($_visitDay=='Tue')||($_visitDay=='Sun') || ($_0501=='0501') ) {
                     echo('visite impossible pour les mardis, dimanche et, les 1er mai');
