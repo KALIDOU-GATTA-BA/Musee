@@ -4,6 +4,8 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use App\Validator\Constraints\ConstrainsTicketType;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ReservationRepository")
@@ -84,5 +86,10 @@ class Reservation
             $this->tickets->removeElement($ticket);
         }
         return $this;
+    }
+    
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('visitDate', new ConstrainsTicketType());
     }
 }
