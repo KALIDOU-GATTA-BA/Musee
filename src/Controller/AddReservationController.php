@@ -15,14 +15,17 @@ class AddReservationController extends AbstractController
      *
      * @return Response
      */
+    
     public function addReservation(Request $request)
-    {      
+    {     
+      
         $form = $this->createForm(AddReservationType::class)->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
                 $reservation = $form->getData();
                 foreach ($reservation->getTickets() as $ticket) {
                     $ticketType=$ticket->getTicketType();                 
-                }       
+                }  
+                     
                 $visitDay = $reservation->getVisitDate();
                 $visitDay = $visitDay->format('Y-m-d');
                 $_visitDay = $reservation->getVisitDate();
@@ -48,15 +51,19 @@ class AddReservationController extends AbstractController
                             $entityManager->persist($ticket);
                         }
                         $entityManager->flush();
+                        
                         return $this->redirectToRoute('list_reservations', [
                         
                         'ticket_id'=> $ticket->getId(),
-                        'resa_id' => $reservation->getId()
+                        'resa_id' => $reservation->getId(),
+
                         ]);
                 }               
         }
         return $this->render('reservation/add_reservation.html.twig', [
             'form_add_reservation' => $form->createView(),
+            
+
         ]);
     }
 }

@@ -2,17 +2,29 @@
 
 {% block body %}
 
-    <h1>Reservations</h1>
-
+    <h1>RÉSERVATIONS</h1>
+    <div class="recap">
         <h2>
-      
-	        <span>Date de visite: {{ reservation.visitDate|date('d-m-Y') }}</span><br>
-	        <span>Votre adresse email: {{ reservation.email }}</span><br>
-	        <span>Votre pays: {{ ticket.country}}</span><br>
-	        <span>Votre nom: {{ ticket.name}}</span><br>
-	        <span>Votre date de naissance: {{ ticket.birthDate|date('d-m-Y') }}</span><br>
-	        <span>Le type de billet: {{ ticket.ticketType }}</span><br>
-	        <span>Tarif réduit:{{ ticket.reducedPrice ? 'OUI' : 'NON' }}</span><br>
-
+	        <span><div class ="label">Date de visite:</div> {{ reservation.visitDate|date('d-m-Y') }}</span><br>
+	        <span><div class ="label">Votre adresse email:</div>{{ reservation.email }}</span><br><br>
+	        <span><div class ="label">Votre pays:</div> {{ ticket.country}}</span><br>
+	        <span><div class ="label">Votre nom:</div> {{ ticket.name}}</span><br>
+	        <span><div class ="label">Votre date de naissance:</div> {{ ticket.birthDate|date('d-m-Y') }}</span><br>
+	        <span><div class ="label">Le type de billet:</div> {{ ticket.ticketType }}</span><br>
+	        <span><div class ="label">Tarif réduit:</div>{{ ticket.reducedPrice ? 'OUI' : 'NON' }}</span><br>
 		</h2>
+		<br><br> <button class="btn btn-success">Valider</button>
+	</div>	
+	<form action="your-server-side-code" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
+    data-amount="999"
+    data-name="Stripe.com"
+    data-description="Example charge"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="auto"
+    data-zip-code="true">
+  </script>
+</form>
 {%  endblock %}

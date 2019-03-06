@@ -16,11 +16,9 @@ class ListReservationsController extends AbstractController
         $reservations= $reservationRepository->find($resa_id);
         $ticketRepository=$this ->getDoctrine()->getRepository(Ticket::class);
         $tickets= $ticketRepository->find($ticket_id);
-
         return $this->render('reservation/list_reservation.html.twig', [
            'ticket' => $tickets,
-           'reservation' => $reservations
-            
+           'reservation' => $reservations,
         ]);
     }
 }
