@@ -5,10 +5,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
-use App\Validator\Constraints\ConstrainsTicketType;
+use Symfony\Component\Validator\Constraints as Assert;
+
+use App\Validator\Constraints\HalfDay;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ReservationRepository")
+ * @HalfDay()
  */
 class Reservation
 {
@@ -48,6 +51,7 @@ class Reservation
         
         $this->tickets = new ArrayCollection();
     }
+
     public function setEmail(string $email): self
     {
         $this->email = $email;
@@ -86,10 +90,5 @@ class Reservation
             $this->tickets->removeElement($ticket);
         }
         return $this;
-    }
-    
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
-    {
-        $metadata->addPropertyConstraint('visitDate', new ConstrainsTicketType());
     }
 }

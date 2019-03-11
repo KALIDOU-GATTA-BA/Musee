@@ -15,6 +15,8 @@ class ContactController extends AbstractController
      * @Route("/contact", name="contactForm")
      */
    public function contact (Request $request, ObjectManager $manager){
+            $session=$this->get('session');
+            $couleur=$session->get('couleur');
                 $contact = new Contact(); 
                 $form= $this->createFormBuilder($contact)
                 ->add('name')
@@ -32,7 +34,8 @@ class ContactController extends AbstractController
                     return $this->redirectToRoute('home');
                 }
                     return $this->render('home/contact.html.twig', [
-                        'formContact' => $form->createView()
+                        'formContact' => $form->createView(),
+                        'couleur' =>$couleur
                     ]); 
     }
 }

@@ -7,4 +7,8 @@ use Symfony\Component\Validator\Constraint;
 class ConstrainsTicketType extends Constraint
 {
 	   public $message="ceci est une erreur !"  ;
+	   public function getTargets()
+		{
+		    return self::CLASS_CONSTRAINT;
+		}
 }

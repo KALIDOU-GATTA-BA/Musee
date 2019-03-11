@@ -3,7 +3,7 @@
 {% block body %}
 
     <h1 class="ver">Ajouter une Réservation</h1>
-
+    {{form_errors(form_add_reservation)}}
     {{ form_start(form_add_reservation, {'attr': {'novalidate': 'novalidate'}}) }}
     {{form_row(form_add_reservation.visitDate)}}
     {{form_row(form_add_reservation.email)}}

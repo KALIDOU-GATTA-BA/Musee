@@ -9,6 +9,9 @@ class HomeController extends AbstractController
      */
     public function index()
     {
+    	$red='red';
+    	$session=$this->get('session');
+    	$session->set('couleur', $red);
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController'
 

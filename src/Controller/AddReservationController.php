@@ -21,49 +21,19 @@ class AddReservationController extends AbstractController
       
         $form = $this->createForm(AddReservationType::class)->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-                $reservation = $form->getData();
-                foreach ($reservation->getTickets() as $ticket) {
-                    $ticketType=$ticket->getTicketType();                 
-                }  
-                     
-                $visitDay = $reservation->getVisitDate();
-                $visitDay = $visitDay->format('Y-m-d');
-                $_visitDay = $reservation->getVisitDate();
-                $_visitDay = $_visitDay->format('D');
-                $_visitDay_ = $reservation->getVisitDate();
-                $_visitDay_ = $_visitDay_->format('Y-m-d');
-                $_0501 = $_visitDay_[5] .$_visitDay_[6] .$_visitDay_[8] .$_visitDay_[9];
-                $curentDate = date("Y-m-d");
-                if (($visitDay == $curentDate)&&($ticketType=='Billet journée')){
-                    $curentHour = date("H");
-                    $curentHour = $curentHour[0] .$curentHour[1];
-                    if ((int)$curentHour >= 14 ){
-                            echo("Il n'est pas possible de réserver un billet journée après 14 h");
-                    }     
-                }
-                elseif (($_visitDay=='Tue')||($_visitDay=='Sun') || ($_0501=='0501') ) {
-                    echo('visite impossible pour les mardis, dimanche et, les 1er mai');
-                } 
-                else{
-                    $entityManager = $this->getDoctrine()->getManager();
-                        $entityManager->persist($reservation);
+                $reservation = $form->getData();  
+                $session1=$this->get('session');
+                $session1->set('reservations', $reservation);
                         foreach ($reservation->getTickets() as $ticket) {
-                            $entityManager->persist($ticket);
-                        }
-                        $entityManager->flush();
-                        
-                        return $this->redirectToRoute('list_reservations', [
-                        
-                        'ticket_id'=> $ticket->getId(),
-                        'resa_id' => $reservation->getId(),
-
-                        ]);
-                }               
-        }
+                            $session2=$this->get('session');
+                            $session2->set('tickets', $ticket);
+                          //  $entityManager->persist($ticket);
+                            }
+                     //   $entityManager->flush();                      
+                        return $this->redirectToRoute('list_reservations');
+        }               
         return $this->render('reservation/add_reservation.html.twig', [
-            'form_add_reservation' => $form->createView(),
-            
-
+            'form_add_reservation' => $form->createView(),    
         ]);
     }
 }
