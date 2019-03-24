@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PrePaymentController!{% endblock %}
+
+{% block body %}
+<pre class='recap'>
+Prix total de la commande: {{coste}} €
+
+Cliquez sur le boutton ci-dessous pour procéder au réglement de votre commande
+</pre>
+<form action="{{path('payment')}}" method="POST" class='stripe_payment'>
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
+    data-amount="{{coste*100}}"
+    data-name="Stripe.com"
+    data-description="Example charge"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="auto"
+    data-zip-code="true">
+  </script>
+</form>
+{% endblock %}

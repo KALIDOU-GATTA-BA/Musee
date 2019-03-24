@@ -18,17 +18,18 @@ class AddReservationController extends AbstractController
     
     public function addReservation(Request $request)
     {     
-      
+     // $reservation=$this->get('session')->get('reservations');
         $form = $this->createForm(AddReservationType::class)->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
                 $reservation = $form->getData();  
                 $session1=$this->get('session');
-                $session1->set('reservations', $reservation);
+                $session1->set('reservation', $reservation);
                         foreach ($reservation->getTickets() as $ticket) {
                             $session2=$this->get('session');
                             $session2->set('tickets', $ticket);
                           //  $entityManager->persist($ticket);
                             }
+                            
                      //   $entityManager->flush();                      
                         return $this->redirectToRoute('list_reservations');
         }               

@@ -46,6 +46,11 @@ class Reservation
      */
     private $tickets;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $payment;
+
     public function __construct()
     {
         
@@ -67,7 +72,6 @@ class Reservation
     public function setVisitDate(\DateTimeInterface $visitDate): self
     {
         $this->visitDate = $visitDate;
-
         return $this;
     }
     /**
@@ -89,6 +93,18 @@ class Reservation
         if ($this->tickets->contains($ticket)) {
             $this->tickets->removeElement($ticket);
         }
+        return $this;
+    }
+
+    public function getPayment(): ?bool
+    {
+        return $this->payment;
+    }
+
+    public function setPayment(bool $payment): self
+    {
+        $this->payment = $payment;
+
         return $this;
     }
 }

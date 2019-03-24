@@ -13,6 +13,10 @@ body{
 	    word-spacing: 129px;
 		font-weight: bold;
 }
+.stripe_payment{
+	padding-bottom: 50px;
+	text-align: center;
+}
 .navbar-brand {
 		
 		font-weight: bold;
@@ -128,9 +132,28 @@ textarea#form_message.form-control{
 	margin-top: 550px;
 	color: white;	
 }
+.resa_recap{
+	text-decoration: underline;
+}
+.btn_recap{
+text-align: center;
+padding-bottom: 20px;
+word-spacing: 30px;	
+}
+div span.valider:hover{
+	background-color: green;
+	color: white;
+	font-weight: bold;
+}
+div span.modifier:hover{
+	background-color: red;
+	color: white;
+	font-weight: bold;
+}
+
 .recap{
 	background-color: none;
-	text-align: center;
+	text-align: left;
 	margin-bottom: 40px;
 	margin-top: 40px;
 	padding-bottom: 40px;

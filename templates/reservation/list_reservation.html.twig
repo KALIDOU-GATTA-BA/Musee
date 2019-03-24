@@ -2,23 +2,26 @@
 
 {% block body %}
 
-    <h1>RÉSERVATIONS</h1>
-    <div class="recap">
-        <h2>
-	        {{ tickets }}
-		</h2>
-		<br><br> <button class="btn btn-success">Valider</button>
-	</div>	
-	<form action="your-server-side-code" method="POST">
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
-    data-amount="999"
-    data-name="Stripe.com"
-    data-description="Example charge"
-    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-    data-locale="auto"
-    data-zip-code="true">
-  </script>
-</form>
+    <h1 class='resa_recap'>RÉSERVATIONS</h1>
+        <pre class='recap'>
+ Email de la réservation:{{ reservation.email }}
+
+ Date de la visite: {{ reservation.visitDate|date("m/d/Y") }}
+        {% for ticket in reservation.tickets %}
+Nom: {{ ticket.name }} 
+           Pays: {{ ticket.country }}
+           Date de naissance: {{ ticket.birthDate|date("m/d/Y") }}
+           Type de billet: {{ ticket.ticketType }}
+           Tarif réduit: {{ ticket.reducedPrice ? 'OUI':'NON' }}     
+
+        {% endfor %} 
+
+		</pre>
+		<br><br> 
+        <div class="btn_recap">   
+          <button class=""><a href="{{path('pre_payment')}}"><span class='valider'>Valider</span></a></button>
+
+          <button class=""><a href="{{path('add_reservation')}}"><span class='modifier'>Modifier</span></a></button>
+        </div>	
+	
 {%  endblock %}
