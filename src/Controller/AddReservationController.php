@@ -24,14 +24,8 @@ class AddReservationController extends AbstractController
                 $reservation = $form->getData();  
                 $session1=$this->get('session');
                 $session1->set('reservation', $reservation);
-                        foreach ($reservation->getTickets() as $ticket) {
-                            $session2=$this->get('session');
-                            $session2->set('tickets', $ticket);
-                          //  $entityManager->persist($ticket);
-                            }
-                            
                      //   $entityManager->flush();                      
-                        return $this->redirectToRoute('list_reservations');
+                return $this->redirectToRoute('list_reservations');
         }               
         return $this->render('reservation/add_reservation.html.twig', [
             'form_add_reservation' => $form->createView(),    
