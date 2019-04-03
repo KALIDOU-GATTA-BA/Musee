@@ -4,20 +4,22 @@
 
 {% block body %}
 <pre class='recap'>
-Prix total de la commande: {{coste}} €
+Prix total de la commande: {{ cost }} €
 
 Cliquez sur le boutton ci-dessous pour procéder au réglement de votre commande
 </pre>
 <form action="{{path('payment')}}" method="POST" class='stripe_payment'>
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_TYooMQauvdEDq54NiTphI7jx"
-    data-amount="{{coste*100}}"
+    data-key="pk_test_1X1uorSnRgIQZriHEH5aSYEy00AMGsQlpP"
+    data-amount="{{cost*100}}"
     data-name="Stripe.com"
     data-description="Example charge"
     data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
     data-locale="auto"
-    data-zip-code="true">
+    data-currency="eur"
+    data-label="Procéder au paiement"
+    data-zip-code="false">
   </script>
 </form>
 {% endblock %}

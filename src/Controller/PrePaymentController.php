@@ -13,12 +13,13 @@ class PrePaymentController extends AbstractController
     
     public function index()
     {
-
-    	$sessionTotalCoste=$this->get('session');
-        $sessionTotalCoste=$sessionTotalCoste->get('sessionTotalCoste');
+        $session=$this->get('session');
+          $total=$session->get('cost');
+        
+    	
         
         return $this->render('pre_payment/pre_payment.html.twig', [
-            'coste' => $sessionTotalCoste
+            'cost' => $total
 
         ]);
     }

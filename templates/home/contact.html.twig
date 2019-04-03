@@ -2,7 +2,7 @@
 {% form_theme formContact 'bootstrap_4_layout.html.twig'  %}
 {% block body %}
 
-	<h1> Remplissez le formulaire ci-dessous pour contacter le Musée {{couleur}} </h1>
+	<h1> Remplissez le formulaire ci-dessous pour contacter le Musée </h1>
 	{{form_start(formContact)}}
 
 	{{ form_row(formContact.name, {'attr' : { 'placeholder': "Votre Nom"}, 'label': 'Nom' } ) }}	
