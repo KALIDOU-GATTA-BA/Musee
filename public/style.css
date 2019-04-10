@@ -13,9 +13,32 @@ body{
 	    word-spacing: 129px;
 		font-weight: bold;
 }
+ h3{
+	color: white;
+}
+ .form-check-label {
+	color: green;
+
+}
+.linkContactAfterPayment{
+	color: red;
+	font-weight: bold;
+	text-decoration: underline;
+}
 .stripe_payment{
 	padding-bottom: 50px;
 	text-align: center;
+}
+.recapPayment{
+	text-align: center;
+	color: white;
+	font-weight:bold; 
+}
+.confirmPayment{
+	color: white;
+	font-style: italic;
+	padding-left: 5px;
+	padding-bottom: 5px;
 }
 .navbar-brand {
 		

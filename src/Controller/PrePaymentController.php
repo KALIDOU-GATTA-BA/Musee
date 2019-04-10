@@ -13,8 +13,9 @@ class PrePaymentController extends AbstractController
     
     public function index()
     {
-        $session=$this->get('session');
-          $total=$session->get('cost');
+        $session=$this->get('session'); 
+
+          $total=$session->get('total');
         
     	
         

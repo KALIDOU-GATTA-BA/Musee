@@ -42,7 +42,7 @@ class Reservation
         return $this->email;
     }
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Ticket")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Ticket", cascade={"persist"})
      */
     private $tickets;
 

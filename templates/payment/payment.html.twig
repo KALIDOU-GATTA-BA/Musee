@@ -4,8 +4,10 @@
 
 {% block body %}
 
-	Total de votre commande: {{total}} euros.
-	un mail de confirmation faisant office de biilet vient de vous être envoyé par mail.
-	Si dans un delai de 24 h vous n'avez  toujours pas l'email, merci de nous <a href="">contacter</a>
-
+	<div class="recapPayment">Total de votre commande: {{total}} euros.</div><br>
+		<div class='confirmPayment'>
+			Un mail de confirmation faisant office de biilet vient de vous être envoyé à l'adresse email indiquée lors de la réservation.
+			Si dans un delai de 24 h vous n'avez  toujours pas l'email, merci de nous <a class="linkContactAfterPayment" href="{{path('contactForm')}}">contacter</a>.
+			Merci pour votre confiance, nous vous souhaitons une agréable visite au Musée du Louvre.
+		</div>
 {% endblock %}
