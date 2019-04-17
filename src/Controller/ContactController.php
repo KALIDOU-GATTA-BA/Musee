@@ -14,7 +14,7 @@ class ContactController extends AbstractController
     /**
      * @Route("/contact", name="contactForm")
      */
-   public function contact (Request $request, ObjectManager $manager){
+    public function contact (Request $request, ObjectManager $manager){
         
                 $contact = new Contact(); 
                 $form= $this->createFormBuilder($contact)

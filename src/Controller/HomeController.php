@@ -1,5 +1,5 @@
 <?php
- namespace App\Controller;
+namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
@@ -9,16 +9,8 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-    	$red='red';
-    	$session=$this->get('session');
-    	$session->set('couleur', $red);
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController'
-
         ]);
     }
 }
-
-/*
-reservation.publishDate|date('Y-m-d')
-*/

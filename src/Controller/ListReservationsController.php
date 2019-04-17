@@ -11,11 +11,6 @@ class ListReservationsController extends AbstractController
      */
     public function listReservationsController()
     {
-       // $reservationRepository=$this->getDoctrine()->getRepository(Reservation::class);
-        //$reservations= $reservationRepository->find($resa_id);
-       // $ticketRepository=$this ->getDoctrine()->getRepository(Ticket::class);
-        //$tickets= $ticketRepository->find($ticket_id);
-      //  $tickets=2;
         $session=$this->get('session');
         $reservation=$session->get('reservation');  
         $total=0;
@@ -30,7 +25,6 @@ class ListReservationsController extends AbstractController
                     $age =(int)$yearOfCurentDate-(int)$yearOfBirth;  
                     
                     $cost=0 ;
-                
                     if($age>=4 && $age<=12){
                         $cost=8;
                         $session=$this->get('session');
@@ -49,16 +43,14 @@ class ListReservationsController extends AbstractController
                         $session->set('cost', $cost);
                         $total=$total+$session->get('cost');
                     }
-                    if($reducedPrice){
+                    if($reducedPrice && $age>12){
                         $cost=10;
                         $session=$this->get('session');
                         $session->set('cost', $cost);
                         $total=$total+$session->get('cost');
                     }   
-        }           
-        
-        $session->set('total', $total); 
-        
+        }                   
+        $session->set('total', $total);       
         return $this->render('reservation/list_reservation.html.twig', [
            'reservation'=>$reservation,   
         ]);
