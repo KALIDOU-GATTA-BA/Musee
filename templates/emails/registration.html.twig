@@ -1,10 +1,7 @@
-{# templates/emails/registration.html.twig #}
-<h3>You did it! You registered!</h3>
 
-Hi {{ name }}! You're successfully registered.
+<meta charset="UTF-8">
+Bonjour, <br> votre réservation a bien été confirmée et porte le numéro <b>{{reservation_num}}</b>. Ce mail fait office de billet que vous devez présenter à l'entrée du Musée.<br>
+<b>NB:</b> Si dans un de vos billets vous avez indiquez que vous bénéficiez du tarif réduit, un justificatif vous sera demandé pour confirmer que vous avez bien droit à une réduction.<br>
+Nous vous souhaitons une bonne visite.<br><br>
 
-{# example, assuming you have a route named "login" #}
-Le corps du message est là !
-
-{# Makes an absolute URL to the /images/logo.png file #}
-Ceci est une deuxième partie!
+<img src="{{ absolute_url(asset('images/Louvre-LOGO.png')) }}">

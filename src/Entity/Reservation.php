@@ -51,6 +51,11 @@ class Reservation
      */
     private $payment;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $count;
+
     public function __construct()
     {
         
@@ -104,6 +109,18 @@ class Reservation
     public function setPayment(bool $payment): self
     {
         $this->payment = $payment;
+
+        return $this;
+    }
+
+    public function getCount(): ?int
+    {
+        return $this->count;
+    }
+
+    public function setCount(int $count): self
+    {
+        $this->count = $count;
 
         return $this;
     }

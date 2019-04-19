@@ -1,5 +1,5 @@
 body{
-		 background: url("https://github.com/KALIDOU-GATTA-BA/MuseeDuLouvre/blob/master/public/museedulouvre.jpg?raw=true") no-repeat center fixed ;
+		 background: url("https://media.architecturaldigest.com/photos/585836f8001c874267ed3f29/master/pass/Louvre%20Pyramid%20AIA.jpg") no-repeat center fixed ;
 		-webkit-background-size: cover; 
   		background-size: cover; 
 }
@@ -12,9 +12,6 @@ body{
 	    text-transform: uppercase;
 	    word-spacing: 129px;
 		font-weight: bold;
-}
-.ver{
-	background-color: red;
 }
 
  h3{

@@ -37,7 +37,9 @@ class Ticket
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $reducedPrice; 
+    private $reducedPrice;
+
+    
     /**
      * @return mixed
      */

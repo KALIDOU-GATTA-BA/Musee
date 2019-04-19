@@ -21,11 +21,8 @@ $(document).ready(function () {
 	            $('.form-check-input').click (function(){
 	                alert('Vous devez présenter un justificatif pour entrer au Musée');
 	            });
-                $('.js-datepicker').datepicker({
-                    format: 'yyyy-mm-dd'
-                });
-	            
-            });
+        
+      });
 });
 
 $(document).ready(function() {
