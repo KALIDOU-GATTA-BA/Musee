@@ -1,3 +1,6 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css';
+
 body{
 		 background: url("https://media.architecturaldigest.com/photos/585836f8001c874267ed3f29/master/pass/Louvre%20Pyramid%20AIA.jpg") no-repeat center fixed ;
 		-webkit-background-size: cover; 

@@ -1,4 +1,8 @@
 import '../css/app.css';
+import $ from 'jquery';
+import "popper.js";
+import 'bootstrap';
+import 'bootstrap-datepicker';
 
 $(document).ready(function () {
             $('.add-another-collection-widget').click(function (e) {
@@ -18,9 +22,15 @@ $(document).ready(function () {
                 // create a new list element and add it to the list
                 var newElem = $(list.attr('data-widget-tickets')).html(newWidget);
                 newElem.appendTo(list);
-	            $('.form-check-input').click (function(){
-	                alert('Vous devez présenter un justificatif pour entrer au Musée');
-	            });
+                $('.form-check-input').click (function(){
+                    alert('Vous devez présenter un justificatif pour entrer au Musée');
+                });
+                $('.js-datepicker').datepicker({
+              format: 'yyyy-mm-dd',
+              //dayNamesMin: [ "Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa" ],
+             // startDate: '-d',
+              // daysOfWeekDisabled: [0, 2]
+        });
         
       });
 });

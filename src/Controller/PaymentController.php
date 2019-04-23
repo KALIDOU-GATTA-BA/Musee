@@ -4,7 +4,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
-use App\Entity\Reservation;
+
 class PaymentController extends AbstractController
 {
     /**
@@ -26,45 +26,26 @@ class PaymentController extends AbstractController
         ]);
 
         $reservation_num=$charge['id'];
-
-
-    /*   $query = $entityManager->createQuery(
-                'SELECT count
-                 FROM App\Entity\Reservation count
-                '
-        );
-        $query->execute();
-
-        dd($query->getResult());*/
-      
-
-        
-       // $nbResaValid=$resaFromDB->getCount(); 
-        $nbResaValid=32; 
+       
         if($charge['status']=='succeeded'){ 
               $session=$this->get('session');
+
               $reservation=$session->get('reservation'); 
               
               $reservation->setPayment(true);
-
-              $i=0;
-              foreach ($reservation->getTickets() as $tickets) {
-                $i++;
-              };
               
-             dd($nbResaValid+$i);
-              // $resaFromDB->setCount($nbResaValid+$i);
-               
-          
-              $manager->persist($reservation);
-              $manager->flush();
-
+              $i=0;
               foreach ($reservation->getTickets() as $tickets) {
                   $nom=$tickets->getName();
                   $birthDate=$tickets->getBirthDate()->format('Y-m-d');
                   $country=$tickets->getCountry();
                   $ticketType=$tickets->getTicketType();
+                  $i++;
               };
+
+              $reservation->setCount($i);
+              $manager->persist($reservation);
+              $manager->flush();
         }
       
         else{

@@ -7,11 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints as Assert;
 
-use App\Validator\Constraints\HalfDay;
+use App\Validator\Constraints\GeneralConstraints;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ReservationRepository")
- * @HalfDay()
+ * @GeneralConstraints()
  */
 class Reservation
 {

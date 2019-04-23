@@ -7,10 +7,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use App\Entity\Ticket;
-use App\Entity\Reservation;
-use Doctrine\Common\Persistence\ObjectManager;
-
 
 class AddReservationController extends AbstractController
 {
@@ -21,39 +17,17 @@ class AddReservationController extends AbstractController
      * @return Response
      */
     
-    public function addReservation(Request $request, ObjectManager $entityManager)
+    public function addReservation(Request $request)
     {  
-
-        /*$query = $entityManager->createQuery(
-                'SELECT count
-                 FROM App\Entity\Reservation count
-                '
-        );
-        $query->execute();  
-        $nbResaValid = $query->getResult();*/
-
-        $repo = $this->getDoctrine()->getRepository(Reservation::class);
-        $articles = $repo ->find('count') ;
-        dd($articles);
-
-    
-        if (231==231) {
                     $form = $this->createForm(AddReservationType::class)->handleRequest($request);
-                if ($form->isSubmitted() && $form->isValid()) {
-                        $reservation = $form->getData();  
-                        $session1=$this->get('session');
-                        $session1->set('reservation', $reservation);
-                        return $this->redirectToRoute('list_reservations');
-                }               
+                      if ($form->isSubmitted() && $form->isValid()) {
+                              $reservation = $form->getData();  
+                              $session1=$this->get('session');
+                              $session1->set('reservation', $reservation);
+                              return $this->redirectToRoute('list_reservations');
+                      }               
                 return $this->render('reservation/add_reservation.html.twig', [
                     'form_add_reservation' => $form->createView(),    
                 ]);
-        }
-        else{
-                echo "Le Musée est complet !";
-                return $this->redirectToRoute('home');
-
-        }
-        
     }
 }

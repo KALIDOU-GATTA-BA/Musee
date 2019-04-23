@@ -4,7 +4,7 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
 
-class HalfDayValidator extends ConstraintValidator
+class GeneralConstraintsValidator extends ConstraintValidator
 {
 	public function validate($reservation, Constraint $constraint)
     {	  
