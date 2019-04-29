@@ -23,7 +23,7 @@ class ListReservationsController extends AbstractController
                     $yearOfBirth=$birthDate[0].$birthDate[1].$birthDate[2].$birthDate[3];
                     $yearOfCurentDate=$curentDate[0].$curentDate[1].$curentDate[2].$curentDate[3];
                     $age =(int)$yearOfCurentDate-(int)$yearOfBirth;  
-                    
+                                        
                     $cost=0 ;
                     if($age>=4 && $age<=12){
                         $cost=8;

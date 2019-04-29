@@ -4,6 +4,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Ticket;
 
 class PaymentController extends AbstractController
 {
@@ -15,7 +16,7 @@ class PaymentController extends AbstractController
       \Stripe\Stripe::setApiKey("sk_test_EgBGQdrRZj3PtAaMKLkm4uFV00i7r6061c");
 
         $token=$request->request->get('stripeToken');
-
+    
         $total=$this->get('session')->get('total');
   
         $charge = \Stripe\Charge::create([
@@ -47,7 +48,7 @@ class PaymentController extends AbstractController
               $manager->persist($reservation);
               $manager->flush();
         }
-      
+          
         else{
             $session=$this->get('session');
             $reservation=$session->get('reservation');  
@@ -66,7 +67,7 @@ class PaymentController extends AbstractController
                     ),
                     'text/html'
           );
-      
+                                                              
             $mailer->send($message);
 
                 return $this->render('payment/payment.html.twig', [

@@ -124,4 +124,13 @@ class Reservation
 
         return $this;
     }
+   /*   public function countNumberPrintedForCategory(Reservation $category)
+    {
+        return $this->createQueryBuilder('fc')
+            ->andWhere('fc.id = :6')
+           ->setParameter('category', $category)
+            ->select('SUM(fc.id) as fortunesPrinted')
+            ->getQuery()
+          dd(  ->getSingleScalarResult());
+    }*/
 }
