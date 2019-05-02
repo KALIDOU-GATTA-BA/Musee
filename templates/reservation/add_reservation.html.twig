@@ -5,8 +5,9 @@
     <h1 class="ver">Ajouter une Réservation</h1>
     {{form_errors(form_add_reservation)}}
     {{ form_start(form_add_reservation, {'attr': {'novalidate': 'novalidate'}}) }}
-    {{form_row(form_add_reservation.visitDate)}}
-    {{form_row(form_add_reservation.email)}}
+    {{form_row(form_add_reservation.visitDate,{'attr' : { 'placeholder': "Date de la visite"}, 'label': 'Date de la visite' })}}
+   
+    {{form_row(form_add_reservation.email,{'attr' : { 'placeholder': "Email"}, 'label': 'Votre adresse email' })}}
         <h3>Tickets</h3>
         {# store the prototype on the data-prototype attribute #}
         <ul id="tickets-fields-list"
@@ -20,9 +21,11 @@
             {% endfor %}
         </ul>
     {{form_widget(form_add_reservation.tickets)}}
-  <button type="button" class="add-another-collection-widget"data-list="#tickets-fields-list">+1 Ticket</button>
-  <button type="submit">Suivant</button> 
+<pre>
+  <button type="button" class="add-another-collection-widget"data-list="#tickets-fields-list">+1 Ticket</button> <button type="submit" class='add-another-collection-widget_next'>Suivant</button>     <buttton class ='remove' data-list="#tickets-fields-list"><a href="">SUPPRIMER</a></button>
+</pre>
   
+
     {{ form_end(form_add_reservation) }} <br>
 
 {%  endblock %}

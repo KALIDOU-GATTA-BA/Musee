@@ -2,7 +2,7 @@
 @import '~bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css';
 
 body{
-		 background: url("https://media.architecturaldigest.com/photos/585836f8001c874267ed3f29/master/pass/Louvre%20Pyramid%20AIA.jpg") no-repeat center fixed ;
+		 background: url("../../public/images/im.jpg") no-repeat center fixed ;
 		-webkit-background-size: cover; 
   		background-size: cover; 
 }
@@ -10,11 +10,25 @@ body{
 	background-color: #2C3E50;
 	opacity: 0.9;
 }
+.navbar-dark .navbar-nav .nav-link{
+	color: white;
+}
+.add-another-collection-widget, .add-another-collection-widget_next{
+	color: blue;
+
+}
+ pre .remove a{
+	color: red;
+	font-weight: bold;
+}
 .bg-primary {
 	    background-color: lightblack !important;
 	    text-transform: uppercase;
 	    word-spacing: 129px;
 		font-weight: bold;
+}
+.form-check-label{
+	color: yellow;
 }
 
  h3{

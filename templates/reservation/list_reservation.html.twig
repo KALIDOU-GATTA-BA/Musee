@@ -6,11 +6,11 @@
         <pre class='recap'>
  Email de la réservation:{{ reservation.email }}
 
- Date de la visite: {{ reservation.visitDate|date("m/d/Y") }}
+ Date de la visite: {{ reservation.visitDate|date("d/m/Y") }}
         {% for ticket in reservation.tickets %}
 Nom: {{ ticket.name }} 
            Pays: {{ ticket.country }}
-           Date de naissance: {{ ticket.birthDate|date("m/d/Y") }}
+           Date de naissance: {{ ticket.birthDate|date("d/m/Y") }}
            Type de billet: {{ ticket.ticketType }}
            Tarif réduit: {{ ticket.reducedPrice ? 'OUI':'NON' }}     
 

@@ -34,26 +34,23 @@ class PaymentController extends AbstractController
               $reservation=$session->get('reservation'); 
               
               $reservation->setPayment(true);
+              $reservation_date=$reservation->getVisitDate();
               
               $i=0;
+              $j=array();
               foreach ($reservation->getTickets() as $tickets) {
                   $nom=$tickets->getName();
                   $birthDate=$tickets->getBirthDate()->format('Y-m-d');
                   $country=$tickets->getCountry();
                   $ticketType=$tickets->getTicketType();
                   $i++;
+                  $j[$i]=$nom;
               };
 
               $reservation->setCount($i);
               $manager->persist($reservation);
               $manager->flush();
-        }
-          
-        else{
-            $session=$this->get('session');
-            $reservation=$session->get('reservation');  
-            $reservation->setPayment(false);         
-        }
+
               $session=$this->get('session');
               $reservation=$session->get('reservation');  
               $email=$reservation->getEmail();
@@ -63,12 +60,24 @@ class PaymentController extends AbstractController
                 ->setBody(
                     $this->renderView(
                         'emails/registration.html.twig',
-                        ['reservation_num' => $reservation_num]
+                        ['reservation_num' => $reservation_num,
+                        'reservation_date'=>$reservation_date,
+                        'reservation_cost'=>$total,
+                        'reservation_names'=>$j]
                     ),
                     'text/html'
           );
                                                               
             $mailer->send($message);
+        }
+          
+        else{
+            $session=$this->get('session');
+            $reservation=$session->get('reservation');  
+            $reservation->setPayment(false); 
+            return $this->redirectToRoute('payment_error');        
+        }
+
 
                 return $this->render('payment/payment.html.twig', [
                     'total'=>$total

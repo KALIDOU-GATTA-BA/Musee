@@ -22,18 +22,16 @@ $(document).ready(function () {
                 // create a new list element and add it to the list
                 var newElem = $(list.attr('data-widget-tickets')).html(newWidget);
                 newElem.appendTo(list);
-                $('.form-check-input').click (function(){
-                    alert('Vous devez présenter un justificatif pour entrer au Musée');
+                $('.form-check-input').mouseup (function(){
+                    alert('Si vous cohez cette case, vous devez présenter un justificatif pour entrer au Musée: Ça peut-être votre étudiant, votre carte de militaire ou d\'employé(e) du Musée etc...');
                 });
                 $('.js-datepicker').datepicker({
-              format: 'yyyy-mm-dd',
-              //dayNamesMin: [ "Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa" ],
-             // startDate: '-d',
-              // daysOfWeekDisabled: [0, 2]
-        });
-        
+                    format: 'yyyy-mm-dd',
+              }); 
       });
-});
+  $('.remove').click(function(e){
+    $('li').remove();
+});});
 
 $(document).ready(function() {
         // you may need to change this code if you are not using Bootstrap Datepicker

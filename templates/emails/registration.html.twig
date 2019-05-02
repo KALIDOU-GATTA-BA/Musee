@@ -1,7 +1,6 @@
-
 <meta charset="UTF-8">
-Bonjour, <br> votre réservation a bien été confirmée et porte le numéro <b>{{reservation_num}}</b>. Ce mail fait office de billet que vous devez présenter à l'entrée du Musée.<br>
-<b>NB:</b> Si dans un de vos billets vous avez indiquez que vous bénéficiez du tarif réduit, un justificatif vous sera demandé pour confirmer que vous avez bien droit à une réduction.<br>
-Nous vous souhaitons une bonne visite.<br><br>
+Bonjour, <br> votre réservation a bien été confirmée. Ce mail fait office de billet que vous devez présenter à l'entrée du Musée.<br>
+<b>NB:</b> Si dans un de vos billets vous avez indiqué que vous bénéficiez du tarif réduit, <em>un justificatif vous sera demandé</em> pour confirmer que vous avez bien droit à une réduction.Ci-dessous, le récapitulatif de votre réservation:<br><br><br><b>Numéro de la réservation</b>: {{reservation_num}}<br><b>Nom(s)</b>: {{reservation_names|json_encode()|raw}}<br><b>Date de la visite</b>: {{reservation_date|date("d/m/Y")}}<br><b>Cout total de la réservation</b>: {{reservation_cost}} €<br>
+Nous vous souhaitons une bonne visite.
 
 <img src="{{ absolute_url(asset('images/Louvre-LOGO.png')) }}">

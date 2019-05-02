@@ -58,12 +58,12 @@ class GeneralConstraintsValidator extends ConstraintValidator
 	               						  ->addViolation();                    
 	               		}     
                 	}
-                	if (($_visitDay=='Tue')||($_visitDay=='Sun') || ($_0501=='0501')|| ($_1101=='1101')|| ($_1225=='1225')|| ($_0101=='0101')|| ($_0508=='0508')|| ($_0714=='0714')| ($_0815=='0815')| ($_1111=='1111') ) {
+                	if (($_visitDay=='Tue')||($_visitDay=='Sun') || ($_0501=='0501')|| ($_1101=='1101')|| ($_1225=='1225')|| ($_0101=='0101')|| ($_0508=='0508')|| ($_0714=='0714')|| ($_0815=='0815')|| ($_1111=='1111') ) {
 							$this->context->buildViolation($constraint->message_2)
 	               						  ->addViolation();                      
 	               	}   
 	               	//Easter off day, Pentecost off day, Ascent off day
-				 	$A= intval(( intval($reservation->getVisitDate()->format('Y'))  % 19)+1);
+				    $A= intval(( intval($reservation->getVisitDate()->format('Y'))  % 19)+1);
 				 	$B= intval((intval($reservation->getVisitDate()->format('Y')) /100+1));
 				 	$C= intval((3*$B)/4 - 12);
 				 	$D= intval((8*$B+5)/25-5);
@@ -78,42 +78,53 @@ class GeneralConstraintsValidator extends ConstraintValidator
 				 		$G=$G+30;
 				 	}
 				 	$res=$G+7-($E+$G)%7 + 1;
-				  	
+				  		
 				   	if ($res>31){
 					   		$count=$res-31;
-					   		if(intval($reservation->getVisitDate()->format('d'))==$count){
+					   		if((intval($reservation->getVisitDate()->format('d'))==$count)&&($reservation->getVisitDate()->format('m')=='04')){
 						            $this->context->buildViolation($constraint->message_2)
 						            ->addViolation(); 
 						    }
 						    $pent=$count+49;
 						    $asc=$count+38;
 						    if($count>11){
-						    	$asc=$asc%30;
-						    	if($asc==0){
-						    		$asc+=30;
-						    	}
+						    	$_30=0;
+						    		
+						    		if ($count==22 &&($reservation->getVisitDate()->format('m:d')=='05:30') ) {
+						    			$_30=-1;
+						    		}
+						    	$asc%=30;
 						    	$pent-=1;
-						    	$pent=$pent%30;
-						    	if ((intval($reservation->getVisitDate()->format('d'))==$pent)||(intval($reservation->getVisitDate()->format('d'))==$asc)) {
+						    	$pent%=30; 
+						    	
+						    	if ((intval($reservation->getVisitDate()->format('d'))==$pent) or (intval($reservation->getVisitDate()->format('d'))==$asc) or $_30==-1) {
 						    		$this->context->buildViolation($constraint->message_2)
 						            ->addViolation(); 
-						    	}
-						    }  
+						    	} 
+
+						    } 
+						    
 						    if ($count<=11) {
-						    	$asc=$asc%30;
-						    	$pent=$pent%30;
-						    	if ((intval($reservation->getVisitDate()->format('d'))==$pent)||(intval($reservation->getVisitDate()->format('d'))==$asc)) {
+						    	$_30=0;
+						    		if ($count==11 &&($reservation->getVisitDate()->format('m:d')=='05:30') ) {
+						    			$_30=-1;
+						    		}
+						    	$asc%=30;
+						    	$pent%=30;
+
+						    	if ((intval($reservation->getVisitDate()->format('d'))==$pent)or (intval($reservation->getVisitDate()->format('d'))==$asc)  or $_30==-1) {
+						    		dd($i=2);
 						    		$this->context->buildViolation($constraint->message_2)
 						            ->addViolation(); 
 						    	}
-						    }
+						    } 
 				   	}
-				   	if ($res<=31){
+
+				   	if ($res<=31){ 
 					   		$pent=$res+48;
-					   		$pent=$pent%30;
+					   		$pent%=30;
 					   		$asc=$res+37;
 					   		$asc%=30;
-					   		dd($asc);
 					   		if((intval($reservation->getVisitDate()->format('d'))==$res)||(intval($reservation->getVisitDate()->format('d'))==$asc)){
 						            $this->context->buildViolation($constraint->message_2)
 						            ->addViolation(); 
