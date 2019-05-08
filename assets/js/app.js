@@ -29,6 +29,7 @@ $(document).ready(function () {
                     format: 'yyyy-mm-dd',
               }); 
       });
+ 
   $('.remove').click(function(e){
     $('li').remove();
 });});

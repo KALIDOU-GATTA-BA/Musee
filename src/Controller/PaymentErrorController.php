@@ -12,7 +12,7 @@ class PaymentErrorController extends AbstractController
      */
     public function index()
     {
-        return $this->render('payment_error/index.html.twig', [
+        return $this->render('payment_error/error.html.twig', [
             'controller_name' => 'PaymentErrorController',
         ]);
     }

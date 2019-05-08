@@ -54,8 +54,8 @@ class PaymentController extends AbstractController
               $session=$this->get('session');
               $reservation=$session->get('reservation');  
               $email=$reservation->getEmail();
-              $message = (new \Swift_Message('Hello Email'))
-                ->setFrom('johanneskep824@gmail.com')
+              $message = (new \Swift_Message('Musée du Louvre'))
+                ->setFrom('baniabina.ba@gmail.com')
                 ->setTo($email)
                 ->setBody(
                     $this->renderView(

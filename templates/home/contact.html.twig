@@ -12,7 +12,7 @@
 	{{ form_row(formContact.phoneNumber, {'attr' : { 'placeholder': "Votre numéro de téléphone"},  'label': 'Numéro de téléphone'} ) }}	
 	{{ form_row(formContact.subject, {'attr' : { 'placeholder': "Object de votre message"},  'label': 'Objet de votre message'} ) }}	
 	{{ form_row(formContact.message, {'attr' : { 'placeholder': "Votre message"},  'label': 'Votre  message'} ) }}	
-	<button type="submit" class ="btn btn-success"> Envoyer </button>
+	<button type="submit" class ="btn"> Envoyer</button><br><br>
 	
 	{% block javascript %}
  					<script src={{ asset("build/app.js") }}></script>
@@ -20,4 +20,4 @@
 
 	{{form_end(formContact)}}
 
-	{% endblock %}
+{% endblock %}

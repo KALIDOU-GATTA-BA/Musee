@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Payement refusé{% endblock %}
+
+{% block body %}
+<pre>
+	<p class='pay_refuse'>Le payement a été refusé,veuillez <a href='{{path('add_reservation')}}'>recommencer</a>.</p><p class='pay_refuse_lk'><a href='{{path('home')}}'>Accueil</a></p>
+</pre>
+{% endblock %}

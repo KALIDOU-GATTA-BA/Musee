@@ -21,6 +21,7 @@ class GeneralConstraintsValidator extends ConstraintValidator
 			    					 
 			       $chosenDay=$reservation->getVisitDate();
 			       $i=0;
+			       $buffer=0;
 			       foreach ($res as $_res ) { 
 			          if($chosenDay->format('Y-m-d')==$_res->getVisitDate()->format('Y-m-d')){
 			              foreach ($reservation->getTickets() as $key ) {
@@ -28,12 +29,14 @@ class GeneralConstraintsValidator extends ConstraintValidator
 			              }
 			              $_res->setCount($_res->getCount()+$i);
 			              if($_res->getCount()>1000){
-			                $this->context->buildViolation($constraint->message_3)
-				            ->addViolation();
+			               $buffer=1;
 			              }
 			          }    
 			       } 
-
+			       if ($buffer==1) {
+			       	 $this->context->buildViolation($constraint->message_3)
+				            ->addViolation();
+			       }
                     $visitDay = $reservation->getVisitDate();
 	                $visitDay = $visitDay->format('Y-m-d');
 	                $_visitDay = $reservation->getVisitDate();
@@ -125,11 +128,9 @@ class GeneralConstraintsValidator extends ConstraintValidator
 						    if ($count<=11) { 
 						    	$_30=0;
 						    	$r=0;
-
 						    		if ($count==11 &&($reservation->getVisitDate()->format('m:d')=='05:30') ) {
 						    			$_30=-1;
 						    		}
-						    		
 						    	$asc%=30;
 						    	$pent%=30;
 						    	if ($reservation->getVisitDate()->format('m')=='05' && (intval($reservation->getVisitDate()->format('d'))==$pent)) {

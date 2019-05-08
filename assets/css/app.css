@@ -10,19 +10,23 @@ body{
 	background-color: #2C3E50;
 	opacity: 0.9;
 }
+
 .navbar-dark .navbar-nav .nav-link{
 	color: white;
 }
 .add-another-collection-widget, .add-another-collection-widget_next{
-	color: blue;
+	color: white;
+	background-color: #503a2c;
+	cursor: pointer;
 
 }
  pre .remove a{
-	color: red;
+	color: white;
+	background-color: #503a2c;
 	font-weight: bold;
 }
 .bg-primary {
-	    background-color: lightblack !important;
+	    background-color: #2C3E50 !important;
 	    text-transform: uppercase;
 	    word-spacing: 129px;
 		font-weight: bold;
@@ -39,9 +43,16 @@ body{
 
 }
 .linkContactAfterPayment{
-	color: red;
+	color:  white;
 	font-weight: bold;
 	text-decoration: underline;
+	background-color: #503a2c;
+}
+.linkContactAfterPayment:hover{
+	color:  white;
+	font-weight: bold;
+	text-decoration: underline;
+	background-color: #503a2c;
 }
 .stripe_payment{
 	padding-bottom: 50px;
@@ -57,6 +68,14 @@ body{
 	font-style: italic;
 	padding-left: 5px;
 	padding-bottom: 5px;
+}
+.pay_refuse_lk a, .pay_refuse a{
+	color: white;
+	font-weight: bold;
+	background-color: #503a2c;
+}
+p{
+	color: white;
 }
 .navbar-brand {
 		
@@ -152,7 +171,10 @@ text-decoration: underline;
 	color:white;
 	font-size: 15px;
 	text-align: center;
-}			
+}	
+.form-control{
+	color: #503a2c;
+}		
 input#form_name.form-control,
 input#form_email.form-control,
 input#form_phoneNumber.form-control,
@@ -162,11 +184,19 @@ input#form_country.form-control,
 input#form_dateBirth.js-datepicker.form-control,
 input#form_visitDate.js-datepicker.form-control,
 textarea#form_message.form-control{
-	color: darkblue;
+	color: #503a2c;
 	font-weight: bold;
 }
+
+input#add_reservation_tickets_0_name.form-control, #tickets-fields-list,input#add_reservation_email.form-control{
+	color: #503a2c;
+}
+
 .login, .logout{
 	text-align: center;
+}
+.form-check-label{
+	color: white;
 }
 .foot{
 	text-align: center;
@@ -181,15 +211,33 @@ text-align: center;
 padding-bottom: 20px;
 word-spacing: 30px;	
 }
-div span.valider:hover{
-	background-color: green;
+div span.valider, .btn:hover{
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+span.valider, .btn{
+	color:white;
+	background-color: #503a2c;
+}
+button{
+	background-color: #503a2c;
+}
+.stripe-button-el span{
+	color:  #503a2c !important;
+	background: white !important;
+}
+.Checkout.is-desktop .Button{
+	color:  red ;
+	background: red ;
+}
+div span.modifier:hover{
 	color: white;
 	font-weight: bold;
 }
-div span.modifier:hover{
-	background-color: red;
-	color: white;
-	font-weight: bold;
+span.modifier{
+	color:white;
+	background-color: #503a2c;
 }
 
 .recap{
