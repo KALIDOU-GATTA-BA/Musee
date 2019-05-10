@@ -33,7 +33,7 @@ class ContactController extends AbstractController
                 $form->handleRequest($request);
                 if ($form->isSubmitted() && $form->isValid()){
                     $manager->persist($contact);
-                    $manager->flush();
+                    $manager->flush();    
                   
                     $res=$this->entityManager->createQuery('SELECT max(id) FROM App\Entity\Contact id')->getResult();
                     

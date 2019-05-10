@@ -16,8 +16,7 @@ class TicketType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
-            ->add('country', CountryType::class, [
+                ->add('country', CountryType::class, [
                 'placeholder' => 'Selectionnez votre pays',
                 'label'=>'Pays'
                 ])
@@ -30,9 +29,9 @@ class TicketType extends AbstractType
                       'label'=>'Date de naissance',
                       'attr' => ['class' => 'js-datepicker'],
                 ])
-               ->add('name', TextType::class,[
+                ->add('name', TextType::class,[
                     'label'=>'Nom'])
-            ->add('ticketType',  ChoiceType::class, [
+                ->add('ticketType',  ChoiceType::class, [
                 'label'=>'Type de billet',
                 'choices' => [
                     'Billet journée' => "Billet journée",

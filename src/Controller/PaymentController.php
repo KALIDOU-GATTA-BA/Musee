@@ -18,6 +18,8 @@ class PaymentController extends AbstractController
         $token=$request->request->get('stripeToken');
     
         $total=$this->get('session')->get('total');
+        if ($total!=0) {
+         
   
         $charge = \Stripe\Charge::create([
             'amount' => $total * 100,
@@ -77,6 +79,7 @@ class PaymentController extends AbstractController
             $reservation->setPayment(false); 
             return $this->redirectToRoute('payment_error');        
         }
+      }
 
 
                 return $this->render('payment/payment.html.twig', [
