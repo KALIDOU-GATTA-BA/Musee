@@ -1,25 +1,19 @@
 <?php
-//pw: TrTr@d_22_06_1984_FTS -- 53196x67x202 root
 namespace App\Controller;
 use App\Form\AddReservationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class AddReservationController extends AbstractController
 {
     /**
      * @Route(path="/add/reservation", name="add_reservation")
      * @param Request $request
-     *
      * @return Response
      */
-    
-    public function addReservation(Request $request)
-    {  
-                
+    public function addReservation(Request $request){  
                     $form = $this->createForm(AddReservationType::class)->handleRequest($request);
                       if ($form->isSubmitted() && $form->isValid()) {
                               $reservation = $form->getData();  

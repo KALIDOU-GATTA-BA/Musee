@@ -12,28 +12,26 @@ class ReservationProcess  {
 	private $cost;
 	private $total;
 	
-	private function setCost($cost):self{
+	public function setCost($cost){
 		$this->cost=$cost;
 		return $this;
 	}
-	private function getCost(){
+	public function getCost(){
 		return $this->cost;		
 	}
-	private function setTotal($total){
-		$session=new Session();
-		$session->set('total', $total);		
-		return $this;
+	public function setTotal($total){
+		$session=new Session();	
+		return $session->set('total', $total);
 	}
-	private function getTotal(){
+	public function getTotal(){
 		$session=new Session();		
 		return $session->get('total'); 		
 	}
-	private function setSessionCost($cost){
-		$session=new Session();
-		$session->set('cost', $cost);		
-		return $this;
+	public function setSessionCost($cost){
+		$session=new Session();	
+		return $session->set('cost', $cost);
 	}
-	private function getSessionCost(){
+	public function getSessionCost(){
 		$session=new Session();		
 		return $session->get('cost'); 
 	}
@@ -44,7 +42,7 @@ class ReservationProcess  {
 	
 	public function totalCost(){
         $reservation=$this->getSessionReservation();  
-        $this->setTotal(0);
+        $this->setTotal(0); 
         $this->setSessionCost(0);
 
         foreach ($reservation->getTickets() as $ticket ) {
@@ -61,12 +59,12 @@ class ReservationProcess  {
                         $this->setSessionCost($this->getCost());
                         $this->setTotal($this->getTotal()+$this->getSessionCost());
                     }
-                    if($age>12 && $age<60){
+                    if($age>12 && $age<60 && !$reducedPrice){
                        $this->setCost(16);
                        $this->setSessionCost($this->getCost());
                        $this->setTotal($this->getTotal()+$this->getSessionCost());
                     }
-                    if($age>=60){
+                    if($age>=60 && !$reducedPrice){
                        $this->setCost(12);
                        $this->setSessionCost($this->getCost());
                        $this->setTotal($this->getTotal()+$this->getSessionCost());
