@@ -2,7 +2,7 @@
 namespace App\Services;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class ContactManager  {
+class ContactManager{
 	
 	public function __construct(ObjectManager $entityManager){
          $this->entityManager = $entityManager;      

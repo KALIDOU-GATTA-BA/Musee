@@ -22,7 +22,7 @@ class PrePaymentController extends AbstractController
                                             'reservation_names'=>$p->sendEmail()[2]]
                                         ),
                                         'text/html'
-              ));
+              )); 
             return $this->redirectToRoute('payment');
           }
           return $this->render('pre_payment/pre_payment.html.twig', [

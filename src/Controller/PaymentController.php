@@ -31,4 +31,4 @@ class PaymentController extends AbstractController
                     'total'=>$rp->getTotal()
                 ]);
     }
-} 
+}     
