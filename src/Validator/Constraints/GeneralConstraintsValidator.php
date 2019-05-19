@@ -35,7 +35,7 @@ class GeneralConstraintsValidator extends ConstraintValidator
 			       } 
 			       if ($buffer==1) {
 			       	 $this->context->buildViolation($constraint->message_3)
-				            ->addViolation();
+				                   ->addViolation();
 			       }
                     $visitDay = $reservation->getVisitDate();
 	                $visitDay = $visitDay->format('Y-m-d');
@@ -86,7 +86,7 @@ class GeneralConstraintsValidator extends ConstraintValidator
 					   		$count=$res-31; 
 					   		if((intval($reservation->getVisitDate()->format('d'))==$count)&&($reservation->getVisitDate()->format('m')=='04')){
 						            $this->context->buildViolation($constraint->message_2)
-						            ->addViolation(); 
+						                          ->addViolation(); 
 						    } 
 						    $pent=$count+49;
 						    $asc=$count+38;
@@ -107,21 +107,25 @@ class GeneralConstraintsValidator extends ConstraintValidator
 								    	} 
 								    	if ($t==-2 or (intval($reservation->getVisitDate()->format('d'))==$asc) or $_30==-1) {
 								    		 $this->context->buildViolation($constraint->message_2)
-								            ->addViolation(); 
+								            			   ->addViolation(); 
 								    	}
 						    	}
 						    	if ($count<13) {
 								    	$asc%=30;
 								    	$pent-=1;
 								    	$pent%=30; 
+								    	$v=0;
+								    	if ($pent==0) {
+								    		$v=1;
+								    	}
 								    	$t=0;
 								    	if (($reservation->getVisitDate()->format('m')=='05')  && intval($reservation->getVisitDate()->format('d'))==$pent) {
 								    		$t=-2;
 								    	} 
-								    	if ($t==-2 or (intval($reservation->getVisitDate()->format('d'))==$asc) ) {
+								    	if ($t==-2 or $v==1 or (intval($reservation->getVisitDate()->format('d'))==$asc) ) {
 
 								    		 $this->context->buildViolation($constraint->message_2)
-								            ->addViolation(); 
+								            			   ->addViolation(); 
 								    	}
 						    	}
 						    }  
@@ -138,7 +142,7 @@ class GeneralConstraintsValidator extends ConstraintValidator
 						    	}
 						    	if ($r==-2 or (intval($reservation->getVisitDate()->format('d'))==$asc)  or $_30==-1) {
 						    		$this->context->buildViolation($constraint->message_2)
-						            ->addViolation(); 
+						            			  ->addViolation(); 
 						    	}
 						    } 
 				   	}
@@ -149,11 +153,11 @@ class GeneralConstraintsValidator extends ConstraintValidator
 					   		$asc%=30;
 					   		if((intval($reservation->getVisitDate()->format('d'))==$res)||(intval($reservation->getVisitDate()->format('d'))==$asc)){
 						            $this->context->buildViolation($constraint->message_2)
-						            ->addViolation(); 
+						            			  ->addViolation(); 
 						    }
 						    if (intval($reservation->getVisitDate()->format('d'))==$pent) {
 						    		$this->context->buildViolation($constraint->message_2)
-						           		 ->addViolation(); 
+						           		 		  ->addViolation(); 
 						    }
 				   	}
 	}

@@ -12,12 +12,12 @@ class ReservationTest extends TestCase
         $t->setCount(1);
         $this->assertEquals(1, $t->getCount());
     }      
-    /*public function testGetVisitDate(){
+    public function testGetVisitDate(){
         //return $this->count;
         $t=new Reservation();
         $t->setVisitDate(new \DateTime());
         $this->assertEquals('2019-12-07', $t->getVisitDate()->format('Y-m-d'));
-    }*/
+    }
     public function testGetPayement(){
         //return $this->count;
         $t=new Reservation();
