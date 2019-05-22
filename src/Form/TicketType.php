@@ -1,7 +1,8 @@
 <?php
+
 namespace App\Form;
+
 use App\Entity\Ticket;
-use App\Entity\Orders;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -18,27 +19,28 @@ class TicketType extends AbstractType
         $builder
                 ->add('country', CountryType::class, [
                 'placeholder' => 'Selectionnez votre pays',
-                'label'=>'Pays'
+                'label' => 'Pays',
                 ])
-                ->add('reducedPrice', CheckboxType::class,[
-                    'label'=>'Tarif réduit'])
+                ->add('reducedPrice', CheckboxType::class, [
+                    'label' => 'Tarif réduit', ])
 
                 ->add('birthDate', DateType::class, [
                       'widget' => 'single_text',
                       'html5' => false,
-                      'label'=>'Date de naissance',
+                      'label' => 'Date de naissance',
                       'attr' => ['class' => 'js-datepicker'],
                 ])
-                ->add('name', TextType::class,[
-                    'label'=>'Nom'])
-                ->add('ticketType',  ChoiceType::class, [
-                'label'=>'Type de billet',
+                ->add('name', TextType::class, [
+                    'label' => 'Nom', ])
+                ->add('ticketType', ChoiceType::class, [
+                'label' => 'Type de billet',
                 'choices' => [
-                    'Billet journée' => "Billet journée",
-                    'Billet demi-journée' => "Billet demi-journée",
-                ]]) 
+                    'Billet journée' => 'Billet journée',
+                    'Billet demi-journée' => 'Billet demi-journée',
+                ], ])
         ;
     }
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

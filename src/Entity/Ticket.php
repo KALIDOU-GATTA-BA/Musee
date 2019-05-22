@@ -1,6 +1,9 @@
 <?php
+
 namespace App\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="ticket")
@@ -19,9 +22,9 @@ class Ticket
     private $name;
     /**
      * @ORM\Column(type="string", length=255)
+     *
      * @var string
      */
-    
     private $country;
 
     /**
@@ -39,7 +42,6 @@ class Ticket
      */
     private $reducedPrice;
 
-    
     /**
      * @return mixed
      */
@@ -47,6 +49,7 @@ class Ticket
     {
         return $this->id;
     }
+
     /**
      * @return mixed
      */
@@ -54,6 +57,7 @@ class Ticket
     {
         return $this->name;
     }
+
     /**
      * @param mixed $name
      */

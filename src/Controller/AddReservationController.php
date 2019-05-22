@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Controller;
+
 use App\Form\AddReservationType;
 use App\Services\ReservationProcess;
 use App\Handlers\Form\AddReservationFormHandler;
@@ -14,22 +16,28 @@ class AddReservationController extends AbstractController
      * @var AddReservationFormHandler
      */
     private $formHandler;
+
     public function __construct(AddReservationFormHandler $formHandler)
     {
         $this->formHandler = $formHandler;
     }
+
     /**
      * @Route(path="/add/reservation", name="add_reservation")
+     *
      * @param Request $request
+     *
      * @return Response
      */
-    public function addReservation(Request $request,  ReservationProcess $p){  
+    public function addReservation(Request $request, ReservationProcess $p)
+    {
         $form = $this->createForm(AddReservationType::class)->handleRequest($request);
-            if ($this->formHandler->handle($form)) {
-                return $this->redirectToRoute('list_reservations');
-            }
+        if ($this->formHandler->handle($form)) {
+            return $this->redirectToRoute('list_reservations');
+        }
+
         return $this->render('reservation/add_reservation.html.twig', [
-                      'form_add_reservation' => $form->createView(),    
+                      'form_add_reservation' => $form->createView(),
                       ]);
     }
 }

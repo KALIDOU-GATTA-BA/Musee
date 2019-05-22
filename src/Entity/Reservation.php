@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Entity;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Mapping\ClassMetadata;
-use Symfony\Component\Validator\Constraints as Assert;
-
 use App\Validator\Constraints\GeneralConstraints;
 
 /**
@@ -41,6 +39,7 @@ class Reservation
     {
         return $this->email;
     }
+
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Ticket", cascade={"persist"})
      */
@@ -58,7 +57,6 @@ class Reservation
 
     public function __construct()
     {
-        
         $this->tickets = new ArrayCollection();
     }
 
@@ -77,8 +75,10 @@ class Reservation
     public function setVisitDate(\DateTimeInterface $visitDate): self
     {
         $this->visitDate = $visitDate;
+
         return $this;
     }
+
     /**
      * @return Collection|Ticket[]
      */
@@ -86,18 +86,22 @@ class Reservation
     {
         return $this->tickets;
     }
+
     public function addTicket(Ticket $ticket): self
     {
         if (!$this->tickets->contains($ticket)) {
             $this->tickets[] = $ticket;
         }
+
         return $this;
     }
+
     public function removeTicket(Ticket $ticket): self
     {
         if ($this->tickets->contains($ticket)) {
             $this->tickets->removeElement($ticket);
         }
+
         return $this;
     }
 
