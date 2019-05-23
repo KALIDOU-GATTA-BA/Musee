@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "beberlei/DoctrineExtensions": "^1.2",
+        "friendsofphp/php-cs-fixer": "^2.15",
         "sensio/framework-extra-bundle": "^5.1",
         "stripe/stripe-php": "^6.31",
         "swiftmailer/swiftmailer": "^6.2",

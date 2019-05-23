@@ -44,15 +44,15 @@ class Mailer
     {
         $this->swiftMailer->send($cm->sendMessage()
                                     ->setBody(
-                                            $this->twig->render(
-                                            'emails/contact.html.twig',
-                                            ['contact_name' => $cm->sql()[2],
+                                        $this->twig->render(
+                                                'emails/contact.html.twig',
+                                                ['contact_name' => $cm->sql()[2],
                                             'contact_email' => $cm->sql()[4],
                                             'contact_phoneNumber' => $cm->sql()[0],
                                             'contact_message' => $cm->sql()[1],
                                             ]
                                         ),
-                                    'text/html'
+                                        'text/html'
                     ));
     }
 }

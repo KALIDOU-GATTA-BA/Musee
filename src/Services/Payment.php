@@ -19,8 +19,8 @@ class Payment
     {
         \Stripe\Stripe::setApiKey('sk_test_EgBGQdrRZj3PtAaMKLkm4uFV00i7r6061c');
         $request = new Request(
-                        $_GET,
-                        $_POST
+            $_GET,
+            $_POST
                     );
         $token = $request->request->get('stripeToken');
         $buffer = 0;
