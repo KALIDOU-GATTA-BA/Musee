@@ -24,6 +24,24 @@ class GeneralConstraintsValidator extends ConstraintValidator
         $res = $this->entityManager->createQuery('SELECT r FROM App\Entity\Reservation r ')->getResult();
 
         $chosenDay = $reservation->getVisitDate();
+        if ((int)$reservation->getVisitDate()->format('Y')< getdate()['year']) {
+            $this->context->buildViolation($constraint->message_4)                     
+            ->addViolation();
+        }
+        if ((int)$reservation->getVisitDate()->format('Y')== getdate()['year']) {
+            if((int)$reservation->getVisitDate()->format('m')< getdate()['mon']){
+                $this->context->buildViolation($constraint->message_4)                     
+                ->addViolation();
+            }
+        }
+        if ((int)$reservation->getVisitDate()->format('Y')== getdate()['year']) {
+            if((int)$reservation->getVisitDate()->format('m')== getdate()['mon']){
+                if ((int)$reservation->getVisitDate()->format('d')<getdate()['mday']) {
+                    $this->context->buildViolation($constraint->message_4)                     
+                    ->addViolation();
+                }
+            }
+        }
         $i = 0;
         $buffer = 0;
         foreach ($res as $_res) {
@@ -32,7 +50,7 @@ class GeneralConstraintsValidator extends ConstraintValidator
                     ++$i;
                 }
                 $_res->setCount($_res->getCount() + $i);
-                if ($_res->getCount() > 1000) {
+                if ($_res->getCount() > 3) {
                     $buffer = 1;
                 }
             }
@@ -56,15 +74,15 @@ class GeneralConstraintsValidator extends ConstraintValidator
         $_0815 = $_visitDay_[5].$_visitDay_[6].$_visitDay_[8].$_visitDay_[9];
         $_1111 = $_visitDay_[5].$_visitDay_[6].$_visitDay_[8].$_visitDay_[9];
         $curentDate = date('Y-m-d');
-
+        
         if (($visitDay == $curentDate) && ('Billet journée' == $ticketType)) {
-            $curentHour = date('H');
-            $curentHour = $curentHour[0].$curentHour[1];
+            $curentHour = date('H')+2;
             if ((int) $curentHour >= 14) {
                 $this->context->buildViolation($constraint->message)
                                              ->addViolation();
             }
         }
+
         if (('Tue' == $_visitDay) || ('Sun' == $_visitDay) || ('0501' == $_0501) || ('1101' == $_1101) || ('1225' == $_1225) || ('0101' == $_0101) || ('0508' == $_0508) || ('0714' == $_0714) || ('0815' == $_0815) || ('1111' == $_1111)) {
             $this->context->buildViolation($constraint->message_2)
                                              ->addViolation();

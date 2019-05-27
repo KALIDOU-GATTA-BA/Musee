@@ -71,12 +71,12 @@ class ReservationProcess
             $yearOfCurentDate = $curentDate[0].$curentDate[1].$curentDate[2].$curentDate[3];
             $age = (int) $yearOfCurentDate - (int) $yearOfBirth;
 
-            if ($age >= 4 && $age <= 12) {
+            if ($age >= 4 && $age < 12) {
                 $this->setCost(8);
                 $this->setSessionCost($this->getCost());
                 $this->setTotal($this->getTotal() + $this->getSessionCost());
             }
-            if ($age > 12 && $age < 60 && !$reducedPrice) {
+            if ($age >= 12 && $age < 60 && !$reducedPrice) {
                 $this->setCost(16);
                 $this->setSessionCost($this->getCost());
                 $this->setTotal($this->getTotal() + $this->getSessionCost());
@@ -86,7 +86,7 @@ class ReservationProcess
                 $this->setSessionCost($this->getCost());
                 $this->setTotal($this->getTotal() + $this->getSessionCost());
             }
-            if ($reducedPrice && $age > 12) {
+            if ($reducedPrice && $age >= 12) {
                 $this->setCost(10);
                 $this->setSessionCost($this->getCost());
                 $this->setTotal($this->getTotal() + $this->getSessionCost());

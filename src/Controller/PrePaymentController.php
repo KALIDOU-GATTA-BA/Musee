@@ -21,7 +21,13 @@ class PrePaymentController extends AbstractController
      * @Route("/pre_payment", name="pre_payment")
      */
     public function index(Payment $p, \Swift_Mailer $mailer, ReservationProcess $rp)
-    {
+    { 
+        if($p->checkDateAvailabilityB4payment()==0) {
+            return $this->redirectToRoute('home');
+
+            exit();
+        }
+
         if (0 == $rp->getTotal()) {
             $p->freeEntrance();
             $this->mailer->send($p, $rp);

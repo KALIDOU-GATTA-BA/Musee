@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Services;
-
+use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -10,9 +10,30 @@ class Payment
     private $request;
     private $mailer;
 
-    public function __construct(ObjectManager $entityManager)
+    public function __construct(ObjectManager $entityManager, ReservationProcess $t)
     {
         $this->entityManager = $entityManager;
+        $this->t=$t->getSessionReservation();
+    }
+
+    public function checkDateAvailabilityB4payment()
+    {
+        $res = $this->entityManager->createQuery('SELECT r FROM App\Entity\Reservation r ')->getResult();
+        $chosenDay=$this->t->getVisitDate();
+        $buffer=1;
+        $i=0;
+        foreach ($res as $_res) {
+            if ($chosenDay->format('Y-m-d') == $_res->getVisitDate()->format('Y-m-d')) {
+                foreach ($this->t->getTickets() as $key) {
+                    ++$i;
+                }
+                $_res->setCount($_res->getCount() + $i);
+                if ($_res->getCount() > 3) {
+                    $buffer=0;
+                }
+            }
+        }
+        return $buffer;
     }
 
     public function checkPayment()
