@@ -16,7 +16,7 @@ class ReservationTest extends TestCase
         //return $this->count;
         $t=new Reservation();
         $t->setVisitDate(new \DateTime());
-        $this->assertEquals('2019-05-24', $t->getVisitDate()->format('Y-m-d'));
+        $this->assertEquals('2019-05-30', $t->getVisitDate()->format('Y-m-d'));
     }
     public function testGetPayement(){
         //return $this->count;

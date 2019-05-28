@@ -28,7 +28,7 @@ class Payment
                     ++$i;
                 }
                 $_res->setCount($_res->getCount() + $i);
-                if ($_res->getCount() > 3) {
+                if ($_res->getCount() > 1000) {
                     $buffer=0;
                 }
             }
