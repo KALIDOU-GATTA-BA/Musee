@@ -14,7 +14,7 @@ class PaymentController extends AbstractController
      */
     public function index(Payment $p, \Swift_Mailer $mailer, ReservationProcess $rp)
     {
-        if( $p->checkDateAvailabilityB4payment()==0) {
+        if ($p->checkDateAvailabilityB4payment()==0) {
             return $this->redirectToRoute('home');
             
             exit();
@@ -26,8 +26,8 @@ class PaymentController extends AbstractController
             $mailer->send(
                 $p->sendEmail()[0]->setBody(
                     $this->renderView(
-                  'emails/registration.html.twig',
-                  ['reservation_num' => $arrayCheckPayment[1],
+                        'emails/registration.html.twig',
+                        ['reservation_num' => $arrayCheckPayment[1],
                                         'reservation_date' => $p->sendEmail()[1],
                                         'reservation_cost' => $rp->getTotal(),
                                         'reservation_names' => $p->sendEmail()[2], ]

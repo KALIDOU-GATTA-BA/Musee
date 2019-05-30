@@ -25,19 +25,19 @@ class GeneralConstraintsValidator extends ConstraintValidator
 
         $chosenDay = $reservation->getVisitDate();
         if ((int)$reservation->getVisitDate()->format('Y')< getdate()['year']) {
-            $this->context->buildViolation($constraint->message_4)                     
+            $this->context->buildViolation($constraint->message_4)
             ->addViolation();
         }
         if ((int)$reservation->getVisitDate()->format('Y')== getdate()['year']) {
-            if((int)$reservation->getVisitDate()->format('m')< getdate()['mon']){
-                $this->context->buildViolation($constraint->message_4)                     
+            if ((int)$reservation->getVisitDate()->format('m')< getdate()['mon']) {
+                $this->context->buildViolation($constraint->message_4)
                 ->addViolation();
             }
         }
         if ((int)$reservation->getVisitDate()->format('Y')== getdate()['year']) {
-            if((int)$reservation->getVisitDate()->format('m')== getdate()['mon']){
+            if ((int)$reservation->getVisitDate()->format('m')== getdate()['mon']) {
                 if ((int)$reservation->getVisitDate()->format('d')<getdate()['mday']) {
-                    $this->context->buildViolation($constraint->message_4)                     
+                    $this->context->buildViolation($constraint->message_4)
                     ->addViolation();
                 }
             }

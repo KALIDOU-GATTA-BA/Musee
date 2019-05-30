@@ -66,11 +66,32 @@ class ReservationProcess
             $ticketType = $ticket->getTicketType();
             $reducedPrice = $ticket->getReducedPrice();
             $birthDate = $ticket->getBirthDate()->format('Y-m-d');
-            $curentDate = date('Y-m-d');
+
+            $curentDate = $reservation->getVisitDate()->format('Y-m-d');
+
             $yearOfBirth = $birthDate[0].$birthDate[1].$birthDate[2].$birthDate[3];
             $yearOfCurentDate = $curentDate[0].$curentDate[1].$curentDate[2].$curentDate[3];
+
             $age = (int) $yearOfCurentDate - (int) $yearOfBirth;
 
+            $monthOfRes=(int)$reservation->getVisitDate()->format('m');
+            $monthOfBirth=(int)$ticket->getBirthDate()->format('m');
+            $dayOfRes=(int)$reservation->getVisitDate()->format('d');
+            $dayOfBirth=(int)$ticket->getBirthDate()->format('d');
+            if ($monthOfRes==$monthOfBirth) {
+                if ($dayOfRes==$dayOfBirth) {
+                    $age=$age;
+                } elseif ($dayOfBirth>$dayOfRes) {
+                    $age--;
+                } else {
+                    $age=$age;
+                }
+            } elseif ($monthOfBirth<$monthOfRes) {
+                $age=$age;
+            } else {
+                $age--;
+            }
+            
             if ($age >= 4 && $age < 12) {
                 $this->setCost(8);
                 $this->setSessionCost($this->getCost());
