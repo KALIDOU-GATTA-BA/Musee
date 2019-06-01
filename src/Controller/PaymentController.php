@@ -39,6 +39,7 @@ class PaymentController extends AbstractController
 
         return $this->render('payment/payment.html.twig', [
                     'total' => $rp->getTotal(),
+                    'email' => $rp->getSessionReservation()->getEmail(),
                 ]);
     }
 }
